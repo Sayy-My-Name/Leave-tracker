@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Admin</title>
+    <link rel='stylesheet' type=text/css href='/stylesheets/style1.css' />
+  </head>
+  
+  <body class="text-center">
+    <div>
+    <form class="form-signin" method="post" action="/add_user">
+    	<h2 class="h3 mb-3 font-weight-normal">Add an user</h1>
+    
+    	<input type="email" id="inputEmail" class="form-control" name="userEmail" placeholder="Email address" required autofocus>
+    	
+    	<input type="password" id="inputPassword" class="form-control" name="userPassword" placeholder="Password" required>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+	</form>
+
+  <form class="change-password" method="post" action="/change_password">
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Change your password</button>
+  </form>
+
+  <form class="change-password" method="post" action="/logout">
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Logout</button>
+  </form>
+  </div>
+  
+  </body>
+</html>

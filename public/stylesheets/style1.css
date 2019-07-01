@@ -1,0 +1,51 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #f5f5f5;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.change-password{
+  width: 150px; 
+  padding: 15px;
+}
+
+.form-signin {
+  padding: 15px;
+  position: relative;
+}
+
+.form-signin input{
+	width: 180px;
+	height: 20px;
+	margin-bottom: 20px;
+}
+
+.form-date {
+	padding: 15px;
+	display: -ms-flexbox;
+  	display: flex;
+  	flex-direction: column;
+  	-ms-flex-align: left;
+  	align-items: left;
+}
+
+.form-date input{
+	margin-bottom: 10px;
+}
+
+.form-date select{
+	margin-bottom: 10px;
+}
+
+.form-date button{
+	width:50px;
+}
