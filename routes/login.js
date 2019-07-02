@@ -21,7 +21,7 @@ router.post('/login', function(req, res) {
 
   collection.findOne ({ email: userEmail}, function(err, user) {
     if(user == null) {
-      res.jsonp({ flag: 1 });
+      res.render('loign', { resposnse: true });
     }
     else if (user.email == userEmail && passwordHash.verify(userPassword, user.password)) {
       if(user.isAdmin == true) {
@@ -34,7 +34,7 @@ router.post('/login', function(req, res) {
     } 
     else {
       console.log("Credentials wrong");
-      res.jsonp({ flag: 1 });
+      res.render('login', {response: true});
     }
    });  
 });
