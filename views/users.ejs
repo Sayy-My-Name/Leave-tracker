@@ -10,12 +10,16 @@
   </head>
   
   <body class="text-center">
+    
     <div>
+      <h2>
+        Hello <%= profileData.email %>
+      </h2>
     <form class="form-date" method="post" action="/apply_leave">
     	<h2 class="h3 mb-3 font-weight-normal">Apply leave </h1>
     
     	Start Date <input type="date" id="inputDate" class="form-control" name="startDate" required autofocus>
-    	
+    
     	No of days <select id="inputDays" class="form-control" name="days" placeholder="No of days" required> 
           <option value="1">1</option>
           <option value="2">2</option>
@@ -26,7 +30,9 @@
           <option value="7">7</option>
           <option value="8">8</option>
       </select>
-		<button class="btn btn-lg btn-primary btn-block"  type="submit">Apply</button>
+		<button class="btn btn-lg btn-primary btn-block" id="apply_leave" type="submit">Apply</button>
+
+    <input type="email" name="userEmail" style="display:none;"  value='<%= profileData.email %>' readonly>
 	  </form>
 
   <form class="change-password" method="post" action="/change_password">
@@ -35,8 +41,13 @@
 
   <form class="change-password" method="post" action="/logout">
       <button class="btn btn-lg btn-primary btn-block" type="submit">Logout</button>
+
   </form>
 
   </div>
   </body>
+
+  <script type="text/javascript">
+    
+  </script>
 </html>

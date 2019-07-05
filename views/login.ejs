@@ -10,29 +10,19 @@
   </head>
   
   <body class="text-center">
-    <form class="form-signin" method="post" action="/login">
+    <form class="form-signin" method="post" action="/profile">
     	<h2 class="h3 mb-3 font-weight-normal">Please sign in </h1>
     
     	<input type="email" id="inputEmail" class="form-control" name="userEmail" placeholder="Email address" required autofocus>
     	
     	<input type="password" id="inputPassword" class="form-control" name="userPassword" placeholder="Password" required>
-		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-	 </form>
+		  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </form>
 
-    <% if (flag==1) { %>
-      <p style="display: none"> 
-        Login Invalid
-      </p>
-    <% } %>
-  
+    <% if (response) { %>
+      <p> Invalid login, check the credentials </p>
+    <% } %>  
   
   </body>
 
-  <script type="text/javascript">
-    $("button").click(function() {
-      if (flag==1 ) {
-        $("p").show();
-      }
-    })
-  </script>
 </html>

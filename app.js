@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session');
 
 var monk = require('monk');
 var db = monk('localhost:27017/employees');
@@ -24,6 +25,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(function(req, res, next){
 	req.db = db;
 	next();
+});
+
+app.use(session({
+	key: 'user_sid',
+    secret: '4SC',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        expires: 600000
+    }
+}));
+
+app.use((req, res, next) => {
+    if (req.cookies.user_sid && !req.session.email) {
+        res.clearCookie('user_sid');        
+    }
+    next();
 });
 
 app.use('/', indexRouter);

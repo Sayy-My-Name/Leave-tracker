@@ -1,11 +1,6 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  display: -ms-flexbox;
-  display: flex;
-  flex-direction: column
-  -ms-flex-align: center;
-  align-items: center;
   background-color: #f5f5f5;
 }
 
