@@ -12,32 +12,18 @@
   <body class="text-center">
 
     <form class="form-signin" method="post" action="/profile">
-    	<h2 class="h3 mb-3 font-weight-normal">Please sign in </h1>
-
-  	<form class="form-signin" method="post" action="/login">
-    		<h2 class="h3 mb-3 font-weight-normal">Please sign in </h1>
+    	<h2 class="h3 mb-3 font-weight-normal">Please sign in </h2>
     
    	 	<input type="email" id="inputEmail" class="form-control" name="userEmail" placeholder="Email address" required autofocus>
-    	
 
     	<input type="password" id="inputPassword" class="form-control" name="userPassword" placeholder="Password" required>
+
 		  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     </form>
 
     <% if (response) { %>
-      <p> Invalid login, check the credentials </p>
+      <p color="red"> Invalid login, check the credentials </p>
     <% } %>  
-  
-  </body>
-
-    		<input type="password" id="inputPassword" class="form-control" name="userPassword" placeholder="Password" required>
-		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-	</form>
-
-	<%if (response) { %>
-      		<p> Invalid login, check the credentials</p>
-   	<% } %> 
-  
   
   </body>
 

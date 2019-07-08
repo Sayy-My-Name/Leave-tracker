@@ -10,9 +10,16 @@
   </head>
   
   <body class="text-center">
+   
     <div>
+      <h2>
+        Hello <%= profileData.userName %>
+      </h2>
+
     <form class="form-signin" method="post" action="/add_user">
-    	<h2 class="h3 mb-3 font-weight-normal">Add an user</h1>
+    	<h2 class="h3 mb-3 font-weight-normal">Add an user</h2>
+
+      <input type="text" id="inputName" class="form-control" name="userName" placeholder="Username" required>
     
     	<input type="email" id="inputEmail" class="form-control" name="userEmail" placeholder="Email address" required autofocus>
     	

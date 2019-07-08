@@ -4,12 +4,10 @@ var router = express.Router();
 var nodemailer = require('nodemailer');
 var passwordHash = require('password-hash');
 
-var sess;
 
 /* GET login page. */
 router.get('/', function(req, res, next) {
-  sess = req.session;
-  if(sess.email && req.cookies.user_sid) {
+  if(req.session.email && req.cookies.user_sid) {
     res.redirect('/profile');
   }
   else {
@@ -18,16 +16,18 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/profile', function(req, res) {
-  console.log('Email:', sess.email);
+  console.log('Email:', req.session.email);
   console.log(req.cookies.user_sid);
-  if(sess.email && req.cookies.user_sid) {
-    res.render('users', {profileData: sess.email});
+  if(req.session.email && req.cookies.user_sid) {
+    res.render('users', {profileData: req.session.email});
+  }
+  else {
+    res.redirect('/');
   }
 });
 
 router.post('/profile', function(req, res) {
-  sess = req.session;
-  console.log('email:', sess.email);
+  console.log('email:', req.session.email);
 
   var db = req.db;
 
@@ -41,12 +41,13 @@ router.post('/profile', function(req, res) {
       res.render('login', {response: true});
     }
     else if (user.email == userEmail && passwordHash.verify(userPassword, user.password)) {
-      sess.email = req.body.userEmail;
+      req.session.userName = req.body.userName;
+      req.session.email = req.body.userEmail;
       if(user.isAdmin == true) {
-        res.render('admin', {profileData: sess.email});
+        res.render('admin', {profileData: req.session});
       }
       else {
-        res.render('users', {profileData: sess.email});
+        res.render('users', {profileData: req.session});
       }
     } 
     else {
@@ -105,28 +106,30 @@ router.post('/apply_leave', function(req, res, next) {
 });
 
 router.post('/change_password', function(req, res, next) {
-  res.render('change_password', { profileData: sess.email });
+  res.render('change_password', { profileData: req.session });
 });
 
 router.post('/logout', function(req, res, next) {
     res.clearCookie('user_sid');
     req.session.destroy((err) => {
       if(err) {
-        console.log(err);
+        console.log("error:", err);
       }
-      res.redirect('/', {response: false});
-    })
+      res.redirect('/');
+    });
 });
 
 router.post('/add_user', function(req, res, next) {
 
   var db = req.db;
+  var userName = req.body.userName;
   var userEmail = req.body.userEmail;
   var userPassword = passwordHash.generate(req.body.userPassword);
 
   var collection = db.get('account_info');
 
   collection.insert({
+    "username" : userName,
     "email" : userEmail,
     "password" : userPassword
   }, function (err, doc) {

@@ -13,7 +13,7 @@
     
     <div>
       <h2>
-        Hello <%= profileData.email %>
+        Hello <%= profileData.userName %>
       </h2>
     <form class="form-date" method="post" action="/apply_leave">
     	<h2 class="h3 mb-3 font-weight-normal">Apply leave </h1>
@@ -35,16 +35,16 @@
     <input type="email" name="userEmail" style="display:none;"  value='<%= profileData.email %>' readonly>
 	  </form>
 
-  <form class="change-password" method="post" action="/change_password">
+    <form class="change-password" method="post" action="/change_password">
       <button class="btn btn-lg btn-primary btn-block" type="submit">Change your password</button>
-  </form>
+    </form>
 
-  <form class="change-password" method="post" action="/logout">
+    <form class="change-password" method="post" action="/logout">
       <button class="btn btn-lg btn-primary btn-block" type="submit">Logout</button>
 
-  </form>
+    </form>
 
-  </div>
+    </div>
   </body>
 
   <script type="text/javascript">

@@ -5,6 +5,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
 
+var redis = require('redis');
+var redisStore = require('connect-redis')(session);
+var client  = redis.createClient();
+
 var monk = require('monk');
 var db = monk('localhost:27017/employees');
 
@@ -29,12 +33,13 @@ app.use(function(req, res, next){
 
 app.use(session({
 	key: 'user_sid',
-    secret: '4SC',
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        expires: 600000
-    }
+  secret: '4SC',
+  store: new redisStore({ host: 'localhost', port: 6379, client: client,ttl :  260}),
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+      expires: 600000
+  }
 }));
 
 app.use((req, res, next) => {
